@@ -5,7 +5,7 @@ import {existsSync, readFileSync} from 'fs';
 import * as chalk from 'chalk';
 
 /** Path to the Bazel file that configures the release output. */
-const BAZEL_RELEASE_CONFIG_PATH = './packages.bzl';
+const bzlConfigPath = join(__dirname, '../../packages.bzl');
 
 /**
  * Ensures that the Angular version placeholder has been correctly updated to support
@@ -27,7 +27,7 @@ export function assertValidFrameworkPeerDependency(newVersion: SemVer) {
       `is invalid. The version range should be: ${requiredRange}`));
     console.error(chalk.red(
       `      Please manually update the version range ` +
-      `in: ${BAZEL_RELEASE_CONFIG_PATH}`));
+      `in: ${bzlConfigPath}`));
     throw new FatalReleaseActionError();
   }
 }
@@ -37,7 +37,6 @@ export function assertValidFrameworkPeerDependency(newVersion: SemVer) {
  * the placeholder could not be found, the process will be terminated.
  */
 function _extractAngularVersionPlaceholderOrThrow(): string {
-  const bzlConfigPath = join(__dirname, BAZEL_RELEASE_CONFIG_PATH);
   if (!existsSync(bzlConfigPath)) {
     console.error(chalk.red(
       `  ✘   Cannot stage release. Could not find the file which sets ` +
