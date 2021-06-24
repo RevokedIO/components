@@ -5,6 +5,6 @@ import {GithubConfig} from '@angular/dev-infra-private/utils/config';
  * uses as remote for the merge script.
  */
 export const github: GithubConfig = {
-  owner: 'angular',
-  name: 'components'
+  owner: 'RevokedIO',
+  name: 'test-release-script-comp'
 };
