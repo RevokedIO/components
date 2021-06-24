@@ -16,7 +16,7 @@ export const release: ReleaseConfig = {
       'material-experimental',
     ]
   },
-  publishRegistry: 'https://wombat-dressing-room.appspot.com',
+  //publishRegistry: 'https://wombat-dressing-room.appspot.com',
   npmPackages: releasePackages.map(pkg => `@angular/${pkg}`),
   buildPackages: async () => {
     // The performNpmReleaseBuild function is loaded at runtime as the loading the
